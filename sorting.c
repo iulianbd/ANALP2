@@ -16,7 +16,7 @@
 
 /***************************************************/
 /* Function: InsertSort    Date: 7/10/2026         */
-/* Your comment                                    */
+/* Author: Raducu Iulian Bidila                    */
 /***************************************************/
 int InsertSort(int* array, int ip, int iu)
 {
@@ -48,7 +48,7 @@ int InsertSort(int* array, int ip, int iu)
 
 /***************************************************/
 /* Function: BubbleSort    Date: 7/10/2026         */
-/* Your comment                                    */
+/* Author: Raducu Iulian Bidila                    */
 /***************************************************/
 int BubbleSort(int* array, int ip, int iu)
 {
@@ -259,5 +259,68 @@ int QuickSort_median(int* array, int ip, int iu)
   return ob_part + ob_izq + ob_der;
 }
 
+int merge(int* array, int ip, int iu, int im)
+{
+  int i = ip, j = im + 1, k = 0, ob = 0;
+  int *aux = NULL;
 
+  if (!array || ip < 0 || iu < 0 || im < ip || im > iu) {
+    return ERR;
+  }
+
+  aux = (int*)malloc((iu - ip + 1) * sizeof(int));
+  if (!aux) {
+    return ERR;
+  }
+
+  while (i <= im && j <= iu) {
+    ob++;
+    if (array[i] <= array[j]) {
+      aux[k++] = array[i++];
+    } else {
+      aux[k++] = array[j++];
+    }
+  }
+
+  while (i <= im) {
+    aux[k++] = array[i++];
+  }
+
+  while (j <= iu) {
+    aux[k++] = array[j++];
+  }
+
+  for (i = ip, k = 0; i <= iu; i++, k++) {
+    array[i] = aux[k];
+  }
+
+  free(aux);
+  return ob;
+}
+
+int MergeSort(int* array, int ip, int iu)
+{
+  int im, ob_izq, ob_der, ob_merge;
+
+  if (!array || ip < 0 || iu < 0) {
+    return ERR;
+  }
+
+  if (ip >= iu) {
+    return 0;
+  }
+
+  im = ip + (iu - ip) / 2;
+
+  ob_izq = MergeSort(array, ip, im);
+  if (ob_izq == ERR) return ERR;
+
+  ob_der = MergeSort(array, im + 1, iu);
+  if (ob_der == ERR) return ERR;
+
+  ob_merge = merge(array, ip, iu, im);
+  if (ob_merge == ERR) return ERR;
+
+  return ob_izq + ob_der + ob_merge;
+}
 

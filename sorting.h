@@ -41,4 +41,7 @@ int QuickSort_mean(int* array, int ip, int iu);
 int pivot_median(int* array, int ip, int iu, int* pos);
 int QuickSort_median(int* array, int ip, int iu);
 
+int merge(int* array, int ip, int iu, int im);
+int MergeSort(int* array, int ip, int iu);
+
 #endif

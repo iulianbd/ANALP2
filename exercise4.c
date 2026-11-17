@@ -49,10 +49,10 @@ int main(int argc, char** argv)
     exit(-1);
   }
 
-  ret =QuickSort_median(perm, 0, tamano - 1);
+  ret = MergeSort(perm, 0, tamano - 1);
 
   if (ret == ERR) {
-    printf("Error: Error in InsertSort\n");
+    printf("Error: Error in MergeSort\n");
     free(perm);
     exit(-1);
   }
