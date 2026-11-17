@@ -45,7 +45,7 @@ int main(int argc, char** argv)
     exit(-1);
   }
 
-  printf("Practice number 1, section 5\n");
+  printf("Practice number 2, section 5\n");
   printf("Done by: Rodrigo Lopez & Iulian Bidila\n");
   printf("Group: 2\n");
   
@@ -66,17 +66,25 @@ int main(int argc, char** argv)
     }
   }
 
-  /* compute times */
-  ret = generate_sorting_times(InsertSort, "tiempos_insert.log",num_min, num_max,incr, n_perms);
-  if (ret == ERR) { /* ERR_TIME should be a negative number */
+/* compute times */
+  ret = generate_sorting_times(QuickSort_min, "quicksort_min.log", num_min, num_max, incr, n_perms);
+  if (ret == ERR) {
     printf("Error in function generate_sorting_times\n");
     exit(-1);
   }
-  ret = generate_sorting_times(BubbleSort, "tiempos_bubble.log",num_min, num_max,incr, n_perms);
-  if (ret == ERR) { /* ERR_TIME should be a negative number */
+
+  ret = generate_sorting_times(QuickSort_mean, "quicksort_mean.log", num_min, num_max, incr, n_perms);
+  if (ret == ERR) {
     printf("Error in function generate_sorting_times\n");
     exit(-1);
   }
+
+  ret = generate_sorting_times(QuickSort_median, "quicksort_median.log", num_min, num_max, incr, n_perms);
+  if (ret == ERR) {
+    printf("Error in function generate_sorting_times\n");
+    exit(-1);
+  }
+
   printf("Correct output \n");
 
   return 0;

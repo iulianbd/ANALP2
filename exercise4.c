@@ -29,7 +29,7 @@ int main(int argc, char** argv)
     fprintf(stderr, " -size : number of elements in the permutation.\n");
     return 0;
   }
-  printf("Practice number 1, section 4\n");
+  printf("Practice number 2, section 4\n");
   printf("Done by: Rodrigo Lopez & Iulian Bidila\n");
   printf("Group: 2\n");
 
@@ -49,7 +49,7 @@ int main(int argc, char** argv)
     exit(-1);
   }
 
-  ret =InsertSort(perm, 0, tamano-1);
+  ret =QuickSort_median(perm, 0, tamano - 1);
 
   if (ret == ERR) {
     printf("Error: Error in InsertSort\n");
